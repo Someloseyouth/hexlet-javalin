@@ -13,6 +13,12 @@ public class HelloWorld {
             var name = ctx.queryParamAsClass("name", String.class).getOrDefault("World");
             ctx.result("Hello, " + name + "!");
         });
+
+        app.get("/users/{id}/post/{postId}", ctx -> {
+            var usersId = ctx.pathParam("id");
+            var postId =  ctx.pathParam("postId");
+            ctx.result("User ID: " + usersId + " Post ID: " + postId);
+        });
         app.start(7070); // Стартуем веб-сервер
     }
 }
